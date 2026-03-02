@@ -7,7 +7,7 @@ repository = "https://github.com/antoniszymanski/gitcredential-rs"
 license = "MPL-2.0"
 
 [dependencies]
-snafu = "0.8"
+snafu = "0.9"
 url = { version = "2", optional = true }
 
 [features]
