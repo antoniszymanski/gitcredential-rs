@@ -48,9 +48,8 @@ impl GitCredential {
             } else if line.len() > MAX_LINE_LENGTH {
                 return Err(FromReaderError::TooLongLine);
             }
-            let (key, value) = match line.split_once('=') {
-                Some(v) => v,
-                None => return Err(FromReaderError::InvalidLine { line }),
+            let Some((key, value)) = line.split_once('=') else {
+                return Err(FromReaderError::InvalidLine { line });
             };
             match key {
                 "protocol" => put_str(&mut gc.protocol, value),
