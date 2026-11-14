@@ -95,7 +95,7 @@ impl GitCredential {
     pub fn set_url(&mut self, url: &Url) {
         put_str(&mut self.protocol, url.scheme());
         put_opt_str(&mut self.host, url.host_str());
-        put_str(&mut self.path, trim_prefix(url.path(), "/"));
+        put_str(&mut self.path, url.path().trim_prefix('/'));
         put_opt_str(&mut self.username, Some(url.username()).filter(|s| !s.is_empty()));
         put_opt_str(&mut self.password, url.password());
     }
@@ -115,9 +115,4 @@ fn put_str(dst: &mut Option<String>, src: &str) {
         Some(dst) => src.clone_into(dst),
         None => *dst = Some(src.to_owned()),
     }
-}
-
-#[inline]
-fn trim_prefix<'a>(s: &'a str, prefix: &'a str) -> &'a str {
-    s.strip_prefix(prefix).unwrap_or(s)
 }

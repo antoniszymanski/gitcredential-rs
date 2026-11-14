@@ -2,6 +2,7 @@
 name = "gitcredential"
 version = "0.1.1"
 edition = "2024"
+rust-version = "1.100.0"
 description = "A library that provides an implementation of the git-credential input/output format"
 repository = "https://github.com/antoniszymanski/gitcredential-rs"
 license = "MPL-2.0"
